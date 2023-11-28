@@ -7,6 +7,10 @@
     height: 16px;
     width: 16px;
     margin: 2px;
-    background-color: red;
     display: flex;
+    background-color: #d9d9d9;
+}
+
+.square:hover {
+    background-color: black;
 }
