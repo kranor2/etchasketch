@@ -1,23 +1,47 @@
-const sizeSelector = document.getElementById("gridsize");
-sizeSelector.addEventListener("click", resizeGrid);
+const grid = document.querySelector(".grid-container");
+const colorSelect = document.getElementById("select-color");
+const clearGrid = document.getElementById("clear");
+const gridLines = document.getElementById("grid-lines");
+const sizer = document.getElementById("grid-size");
 
-function resizeGrid(size) {
-    let size = 16
-    
-    do {
-        size = +prompt("How big do you want your grid to be?", "Enter a number between 8 and 100 here.");
-    } while (8 < size > 100)
+let gridSize = 16
+let penMode = "custom-color"
+let gridLinesOn = true
+begin();
+let squares = document.querySelectorAll(".square");
 
-    createGrid(size);
-}
+function createGrid(size) {
+    document.documentElement.style.setProperty("--grid-size", size);
 
-const container = document.getElementById("container");
-function createGrid(realSize) {
-    size = size * size
-    for (let i = 0; i < size; i++) {
-        const gridSquare = document.createElement("div");
-        gridSquare.classList.add("square");
-        container.appendChild(gridSquare);  
-        }    
+    grid.addEventListener("mousedown", function (e) {
+        e.preventDefault()
+    });
+
+    for (let i = 0; i = size; i++) {
+        size = size * size
+        const square = document.createElement("div");
+        square.classList.add("square");
+        grid.appendChild(square);
+
+        square.addEventListener("mouseover", changeColor);
+        square.addEventListener("mousedown", changeColor);
+
+        if (gridLinesOn) {
+            square.classList.add("grid-lines")
+        };
     };
-// createGrid(16);
+};
+
+function resizeGrid() {
+    for (let square of squares) {
+        square.remove();
+    };
+    gridSize = slider.value
+    createGrid(gridSize);
+    squares = document.querySelectorAll(".square");
+};
+
+function showGridSize() {
+    const displayValue = document.querySelector("label[for='grid-size']");
+    displayValue.textContent = `Grid Size: ${slider.value} x ${slider.value}`;
+};
