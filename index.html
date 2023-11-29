@@ -7,6 +7,15 @@
     </head>
     <body>
         <h1>Etch A Sketch</h1>
+        <div class="size-input">
+            <h2><label for="grid-size">Grid Size: </label></h2>
+            <div class="sliderBlock">
+                <p id="minimum">8</p>
+                <input type="range" name="grid-size" id="grid-size" min="8" max="100" step="2" value="16" oninput="document.getElementbyId('grid-size-value').innerText = parseInt(this.value); let gridSizeValue = parseInt(this.value)">
+                <p id="maximum">100</p>
+            </div>
+            <output name="show_grid-size-value_val" id="grid-size-value">16</output>    
+        </div>
         <div id="container"></div>
         <script src="javascript.js"></script>
     </body>
