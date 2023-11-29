@@ -1,4 +1,4 @@
-const sizeSelector = document.getElementById("#gridsize");
+const sizeSelector = document.getElementById("gridsize");
 sizeSelector.addEventListener("click", resizeGrid);
 
 function resizeGrid(size) {

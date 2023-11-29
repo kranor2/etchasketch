@@ -7,16 +7,26 @@
     </head>
     <body>
         <h1>Etch A Sketch</h1>
-        <div class="size-input">
-            <h2><label for="grid-size">Grid Size: </label></h2>
-            <div class="sliderBlock">
-                <p id="minimum">8</p>
-                <input type="range" name="grid-size" id="grid-size" min="8" max="100" step="2" value="16" oninput="document.getElementbyId('grid-size-value').innerText = parseInt(this.value); let gridSizeValue = parseInt(this.value)">
-                <p id="maximum">100</p>
+        <div class="dashboard">
+            <div class="grid-bkgd">
+                <label for="background-color">Background Color</label>
+                <input type="color" class="brush" data-name="background-color" id="grid-bkgd-color">
             </div>
-            <output name="show_grid-size-value_val" id="grid-size-value">16</output>    
-        </div>
-        <div id="container"></div>
+            <div class="color-selector">
+                <label for="custom-color">Choose Pen Color</label>
+                <input type="color" class="brush" data-name="custom-color" id="select-color">
+            </div>
+            <button class="brush" data-name="eraser" id="eraser">Eraser</button>
+            <button id="clear">Clear</button>
+            <div class="lines">
+                <input type="checkbox" id="grid-lines" checked>
+                <label for="grid-lines">Show grid lines?</label>
+            </div>
+            <div class="size-slider">
+                <h2><label for="grid-size">Grid Size:</label></h2>
+                <input type="range" name="grid-size" id="grid-size" min="8" max="100" step="2" value="16">
+            </div>
+        </div>  
         <script src="javascript.js"></script>
     </body>
 </html>
