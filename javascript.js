@@ -45,3 +45,17 @@ function showGridSize() {
     const displayValue = document.querySelector("label[for='grid-size']");
     displayValue.textContent = `Grid Size: ${slider.value} x ${slider.value}`;
 };
+
+function toggleGridLines() {
+    gridLinesOn = !gridLinesOn
+    for (let square of squares) {
+        square.classList.toggle("grid-lines");
+    }
+    grid.classList.toggle("grid-lines");
+}
+
+function clearGrid() {
+    for (let square of squares) {
+        square.style.backgroundColor = "";
+    }
+}
