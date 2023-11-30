@@ -22,10 +22,9 @@ function createGrid(size) {
     for (let i = 0; i < size; i++) {
         const square = document.createElement("div");
         square.classList.add("square");
-        grid.appendChild(square);
-
         square.addEventListener("mouseover", paint);
         square.addEventListener("mousedown", paint);
+        grid.appendChild(square);
 
         if (gridLinesOn) {
             square.classList.add("grid-lines")
@@ -93,7 +92,7 @@ function paint(event) {
             newBackground();
         }
         else {
-            this.style.backgroundColor = colorPicker.value;
+            this.style.backgroundColor = colorSelect.value;
         };
     };
 };
