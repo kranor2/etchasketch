@@ -79,3 +79,36 @@ function clearGrid() {
         square.style.backgroundColor = "";
     }
 }
+
+function paint(event) {
+    if (event.buttons === 1) {
+        if (penMode === "random-color") {
+            this.style.backgroundColor = getRandomColor();
+        }
+        else if (penMode === "eraser") {
+            this.style.backgroundColor = "";
+        }
+        else if (penMode === "grid-bkgd-color") {
+            newBackground();
+        }
+        else {
+            this.style.backgroundColor = colorPicker.value;
+        };
+    };
+};
+
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+};
+
+function newBackground() {
+    const selectBkgdColor = document.getElementById("grid-bkgd-color");
+    for (let square of squares) {
+        if (!square.style.backgroundColor) {
+            square.style.backgroundColor = selectBkgdColor.value;
+        };
+    };
+};
