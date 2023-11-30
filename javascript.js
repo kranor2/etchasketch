@@ -4,14 +4,14 @@ const clearAll = document.getElementById("clear");
 const gridLines = document.getElementById("grid-lines");
 const sizer = document.getElementById("grid-size");
 
-let gridSize = 16
+let size = 16
 let penMode = "custom-color"
 let gridLinesOn = true
 begin();
 let squares = document.querySelectorAll(".square");
 
 function begin() {
-    createGrid(gridSize);
+    createGrid(size);
     displayGridSize();
 
     const brushes = document.querySelectorAll('.brush');
@@ -39,12 +39,13 @@ function createGrid(size) {
 
     for (let i = 0; i = size; i++) {
         size = size * size
+        size = 16
         const square = document.createElement("div");
         square.classList.add("square");
         grid.appendChild(square);
 
-        square.addEventListener("mouseover", changeColor);
-        square.addEventListener("mousedown", changeColor);
+        square.addEventListener("mouseover", paint);
+        square.addEventListener("mousedown", paint);
 
         if (gridLinesOn) {
             square.classList.add("grid-lines")
@@ -56,8 +57,8 @@ function resizeGrid() {
     for (let square of squares) {
         square.remove();
     };
-    gridSize = slider.value
-    createGrid(gridSize);
+    size = slider.value
+    createGrid(size);
     squares = document.querySelectorAll(".square");
 };
 

@@ -1,16 +1,41 @@
-#container {
+:root {
+    --grid-size: 1;
+}
+
+.interface {
     display: flex;
-    flex-wrap: wrap;
-    width: 328px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-size), 1fr);
+    grid-template-rows: repeat(var(--grid-size), 1fr);
+    width: 640px;
+    margin-left: 50px;
+    cursor: crosshair;
 }
 .square {
-    height: 16px;
-    width: 16px;
-    margin: 2px;
-    display: flex;
+    padding-bottom: 100%;
     background-color: #d9d9d9;
 }
 
-.square:hover {
-    background-color: black;
+.dashboard, .slider {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard {
+    justify-content: space-around;
+    height: 100%;
+}
+
+.active {
+    background-color: red;
+}
+
+.grid-lines {
+    outline: 1px solid black;
 }
