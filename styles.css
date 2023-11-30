@@ -2,28 +2,45 @@
     --grid-size: 1;
 }
 
+body {
+    background-color: #f54772;
+}
+
 h1 {
     display: flex;
     justify-content: center;
+    font-family: "Reenie Beanie", sans-serif;
+    font-size: 48px;
+}
+
+button {
+    font-family: "Reenie Beanie", sans-serif;
+    font-size: 24px; 
+    background-color: #aaeb95;
+    width: 240px;
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: white;
 }
 
 .interface {
+    font-family: "Reenie Beanie", sans-serif;
     display: flex;
     flex-wrap: auto;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 72px;
 }
 
-#grid-container {
-    display: grid;
-    grid-template-columns: repeat(var(--grid-size), 1fr);
-    grid-template-rows: repeat(var(--grid-size), 1fr);
-    height: 640px;
-    width: 640px;
-    margin-left: 250px;
-    cursor: crosshair;
+.grid-bkgd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 .square {
     padding-bottom: 100%;
     background-color: white;
@@ -36,6 +53,7 @@ h1 {
 .dashboard, .slider {
     display: flex;
     flex-direction: column;
+    font-size: 24px;
 }
 
 .dashboard {
@@ -44,9 +62,19 @@ h1 {
 }
 
 .active {
-    background-color: red;
+    background-color: #3cb106;
 }
 
 .grid-lines {
     outline: 1px solid black;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-size), 1fr);
+    grid-template-rows: repeat(var(--grid-size), 1fr);
+    height: 640px;
+    width: 640px;
+    margin-left: 250px;
+    cursor: crosshair;
 }
