@@ -29,6 +29,10 @@ h1 {
     background-color: white;
 }
 
+.square:hover {
+    background-color: black;
+}
+
 .dashboard, .slider {
     display: flex;
     flex-direction: column;
