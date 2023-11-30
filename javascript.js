@@ -1,20 +1,43 @@
-const grid = document.querySelector(".grid-container");
+const grid = document.getElementById("grid-container");
 const colorSelect = document.getElementById("select-color");
 const clearAll = document.getElementById("clear");
 const gridLines = document.getElementById("grid-lines");
 const sizer = document.getElementById("grid-size");
 
 let size = 16
+sizer.value = 16
 let penMode = "custom-color"
 let gridLinesOn = true
 begin();
 let squares = document.querySelectorAll(".square");
 
+function createGrid(size) {
+    document.documentElement.style.setProperty("--grid-size", size);
+
+    grid.addEventListener("mousedown", function (e) {
+        e.preventDefault()
+    });
+
+    size = size * size
+    for (let i = 0; i < size; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        grid.appendChild(square);
+
+        square.addEventListener("mouseover", paint);
+        square.addEventListener("mousedown", paint);
+
+        if (gridLinesOn) {
+            square.classList.add("grid-lines")
+        };
+    };
+};
+
 function begin() {
     createGrid(size);
-    displayGridSize();
+    showGridSize();
 
-    const brushes = document.querySelectorAll('.brush');
+    const brushes = document.querySelectorAll(".brush");
     for (let brush of brushes) {
         brush.addEventListener("click", function () {
             document.querySelector(".active").classList.remove("active");
@@ -30,41 +53,18 @@ function begin() {
     sizer.addEventListener("change", resizeGrid);
 };
 
-function createGrid(size) {
-    document.documentElement.style.setProperty("--grid-size", size);
-
-    grid.addEventListener("mousedown", function (e) {
-        e.preventDefault()
-    });
-
-    for (let i = 0; i = size; i++) {
-        size = size * size
-        size = 16
-        const square = document.createElement("div");
-        square.classList.add("square");
-        grid.appendChild(square);
-
-        square.addEventListener("mouseover", paint);
-        square.addEventListener("mousedown", paint);
-
-        if (gridLinesOn) {
-            square.classList.add("grid-lines")
-        };
-    };
-};
-
 function resizeGrid() {
     for (let square of squares) {
         square.remove();
     };
-    size = slider.value
+    size = sizer.value
     createGrid(size);
     squares = document.querySelectorAll(".square");
 };
 
 function showGridSize() {
     const displayValue = document.querySelector("label[for='grid-size']");
-    displayValue.textContent = `Grid Size: ${slider.value} x ${slider.value}`;
+    displayValue.textContent = `Grid Size: ${sizer.value} x ${sizer.value}`;
 };
 
 function toggleGridLines() {
