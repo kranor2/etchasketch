@@ -1,6 +1,6 @@
 const grid = document.querySelector(".grid-container");
 const colorSelect = document.getElementById("select-color");
-const clearGrid = document.getElementById("clear");
+const clearAll = document.getElementById("clear");
 const gridLines = document.getElementById("grid-lines");
 const sizer = document.getElementById("grid-size");
 
@@ -9,6 +9,26 @@ let penMode = "custom-color"
 let gridLinesOn = true
 begin();
 let squares = document.querySelectorAll(".square");
+
+function begin() {
+    createGrid(gridSize);
+    displayGridSize();
+
+    const brushes = document.querySelectorAll('.brush');
+    for (let brush of brushes) {
+        brush.addEventListener("click", function () {
+            document.querySelector(".active").classList.remove("active");
+            penMode = brush.dataset.name;
+            brush.classList.add("active");
+        });
+    };
+
+    colorSelect.classList.add("active");
+    clearAll.addEventListener("click", clearGrid);
+    gridLines.addEventListener("change", toggleGridLines);
+    sizer.addEventListener("input", showGridSize);
+    sizer.addEventListener("change", resizeGrid);
+};
 
 function createGrid(size) {
     document.documentElement.style.setProperty("--grid-size", size);
